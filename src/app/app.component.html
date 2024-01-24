@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<body>
+
+  <mat-toolbar color="primary">
+    <title class="title-button"></title>
+    <a routerLink="/"><button color="accent" mat-button class="login-register-button"> {{title}}</button></a>
+
+    <div class="buttonLogReg">
+
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+
+  <app-timer-container class="timerContainer"></app-timer-container>
+
+</body>
