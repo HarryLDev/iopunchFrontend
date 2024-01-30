@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { TimerService } from './timer.service';
 
 
 
@@ -9,7 +10,9 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss']
 })
+
 export class TimerComponent implements OnDestroy {
+  constructor(private timerService: TimerService) {}
   seconds = 0;
   minutes = 0;
   hours = 0;
@@ -80,6 +83,18 @@ export class TimerComponent implements OnDestroy {
 
     const savedTime = { hours: this.savedHour, minutes: this.savedMin, seconds: this.savedSec };
 
+    this.timerService.stopTimer({
+      hours: this.savedHour,
+      minutes: this.savedMin,
+      seconds: this.savedSec,
+    }).subscribe(
+      () => {
+        console.log('Timer stopped and values saved successfully');
+      },
+      (error: any) => {
+        console.error('Error saving timer:', error);
+      }
+    );
 
   }
 
