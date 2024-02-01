@@ -89,7 +89,7 @@ export class TimerComponent implements OnDestroy {
       seconds: this.savedSec,
     }).subscribe(
       () => {
-        console.log('Timer stopped and values saved successfully');
+        console.log('Timer stopped and values saved successfully: %d : %d : %d', this.savedHourstr, this.savedMinStr, this.savedSecStr);
       },
       (error: any) => {
         console.error('Error saving timer:', error);
