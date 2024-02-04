@@ -1,21 +1,5 @@
 /* styles.scss or component.css */
-.timerContainer {
-  position: fixed;
-  background-color: #3f51b5;
-  border-radius: 10px;
-  padding: 15px 20px;
-  color: white;
-  text-align: center;
-  width: 400px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
+
 
 .saved-time-display {
   background-color: #3f51b5;
@@ -29,17 +13,21 @@
 
 .mat-toolbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
+}
 
-  button{
-    font-size: 20px;
+.LogRegButton{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 15px;
+  }
+
+  .titleButton{
+    font-size: 30px;
     font-weight: bold;
   }
 
-}
 
-.buttonLogReg {
-  display: flex;
-  gap: 10px;
-}
+
+
