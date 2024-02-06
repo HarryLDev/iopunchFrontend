@@ -1,5 +1,16 @@
 <div class="timerContainer">
+  <div>
+   <form>
+    <mat-form-field class="width">
+      <mat-label>Name Your Punch</mat-label>
+      <input matInput placeholder="Running to the fridge and back:" [(ngModel)]="punchName" name="punchName">
+    </mat-form-field>
+  </form>
+</div>
+
+
 <div style="font-size: 80px;">{{stringHour}}:{{stringMin}}:{{stringSec}}</div>
-<button class="IOButton" (click)="toggleTimer()">{{isRunning ? 'O' : 'I'}}</button>
+<button class="IOButton" (click)="toggleTimer(); savePunchName()">{{isRunning ? 'O' : 'I'}}</button>
+<div style="font-size: 20px;">{{savedPunchName}}</div>
 <div style="font-size: 40px;">{{savedHourstr}}:{{savedMinStr}}:{{savedSecStr}} saved</div>
 </div>

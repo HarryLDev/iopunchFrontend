@@ -1,6 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { TimerService } from './timer.service';
 
 
@@ -13,6 +11,8 @@ import { TimerService } from './timer.service';
 
 export class TimerComponent implements OnDestroy {
   constructor(private timerService: TimerService) {}
+  punchName: string = '';
+  savedPunchName: string = '';
   seconds = 0;
   minutes = 0;
   hours = 0;
@@ -81,25 +81,33 @@ export class TimerComponent implements OnDestroy {
     this.hours = 0;
     this.savedHourstr = this.savedHour.toString().padStart(2, '0');
 
-    const savedTime = { hours: this.savedHour, minutes: this.savedMin, seconds: this.savedSec };
 
     this.timerService.stopTimer({
       hours: this.savedHour,
       minutes: this.savedMin,
       seconds: this.savedSec,
+      punchName: this.punchName
     }).subscribe(
       () => {
-        console.log('Timer stopped and values saved successfully: %d : %d : %d', this.savedHourstr, this.savedMinStr, this.savedSecStr);
+        console.log('Timer stopped and %s saved successfully: %d : %d : %d', this.savedPunchName, this.savedHourstr, this.savedMinStr, this.savedSecStr);
       },
       (error: any) => {
         console.error('Error saving timer:', error);
       }
     );
-
+    this.savedPunchName = this.punchName;
+    this.punchName = '';
   }
+
+  savePunchName(): void {
+    this.punchName = this.punchName.trim();
+  }
+
+
 
   ngOnDestroy(): void {
     this.stopTimer();
+
   }
 }
 
