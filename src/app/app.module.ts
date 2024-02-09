@@ -15,13 +15,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { TimerService } from './timer/timer.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CommonModule } from '@angular/common';
+import { SavedTimesComponent } from './saved-times/saved-times.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     TimerComponent,
+
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
@@ -33,6 +38,9 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     LoginComponent,
     RegisterComponent,
+    SavedTimesComponent
+
+
 
   ],
   providers: [TimerService],
