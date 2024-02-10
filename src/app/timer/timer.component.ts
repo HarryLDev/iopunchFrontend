@@ -81,33 +81,33 @@ export class TimerComponent {
     this.savedHourstr = this.savedHour.toString().padStart(2, '0');
 
 
-    //   this.timerService.stopTimer({
-    //     hours: this.savedHour,
-    //     minutes: this.savedMin,
-    //     seconds: this.savedSec,
-    //     punchName: this.punchName
-    //   }).subscribe(
-    //     () => {
-    //       console.log('Timer stopped and %s saved successfully: %d : %d : %d', this.savedPunchName, this.savedHourstr, this.savedMinStr, this.savedSecStr);
-    //     },
-    //     (error: any) => {
-    //       console.error('Error saving timer:', error);
-    //     }
-    //   );
-    //   this.savedPunchName = this.punchName;
-    //   this.punchName = '';
-    // }
+      this.timerService.stopTimer({
+        hours: this.savedHour,
+        minutes: this.savedMin,
+        seconds: this.savedSec,
+        punchName: this.punchName
+      }).subscribe(
+        () => {
+          console.log('Timer stopped and %s saved successfully: %d : %d : %d', this.savedPunchName, this.savedHourstr, this.savedMinStr, this.savedSecStr);
+        },
+        (error: any) => {
+          console.error('Error saving timer:', error);
+        }
+      );
+      this.savedPunchName = this.punchName;
+      this.punchName = '';
+    }
 
-    // savePunchName(): void {
-    //   this.punchName = this.punchName.trim();
-    // }
+    savePunchName(): void {
+      this.punchName = this.punchName.trim();
+    }
 
 
 
-    // ngOnDestroy(): void {
-    //   this.stopTimer();
+    ngOnDestroy(): void {
+      this.stopTimer();
 
-    // }
+    }
   }
 
-}
+
