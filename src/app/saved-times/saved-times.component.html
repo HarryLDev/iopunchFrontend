@@ -1,0 +1,10 @@
+<div style="text-align: center;">
+  <ul *ngFor="let time of (times$ | async)" class="savedTimerBox">
+    <li style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div *ngIf="time.punchName" style="">{{ time.punchName }}</div>
+      <div style="">
+        {{ time.hours | number:'2.0-0' }} : {{ time.minutes | number:'2.0-0' }} : {{ time.seconds | number:'2.0-0' }}
+      </div>
+    </li>
+  </ul>
+</div>
