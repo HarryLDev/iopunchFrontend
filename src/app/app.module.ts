@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CommonModule } from '@angular/common';
 import { SavedTimesComponent } from './saved-times/saved-times.component';
+import { SavedTimesService } from './saved-times/saved-times.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { SavedTimesComponent } from './saved-times/saved-times.component';
 
 
   ],
-  providers: [TimerService],
+  providers: [TimerService, SavedTimesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

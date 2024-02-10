@@ -8,12 +8,12 @@ import { RegisterComponent } from './register/register.component';
 import { SavedTimesComponent } from './saved-times/saved-times.component';
 import { TimerComponent } from './timer/timer.component';
 const routes: Routes = [
-  {path: 'Home', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'SavedTimes', component: SavedTimesComponent},
   {path: 'Login',component: LoginComponent},
   {path: 'Register', component: RegisterComponent},
   {path: 'PunchIn', component:TimerComponent},
-  { path: '**', component: PageNotFoundComponent }
+  {path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
