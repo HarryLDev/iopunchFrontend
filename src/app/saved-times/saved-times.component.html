@@ -5,7 +5,7 @@
       <div style="font-size: 30px; vertical-align: middle;">
         {{ time.hours | number:'2.0-0' }} : {{ time.minutes | number:'2.0-0' }} : {{ time.seconds | number:'2.0-0' }}
       </div>
-      <button mat-icon-button color="warn" (click)="deleteSavedTimer(time.id)">
+      <button mat-icon-button color="warn" (click)="deleteSavedTimer(time.timerID)">
         <mat-icon style="font-size: 30px">delete</mat-icon>
       </button>
     </li>

@@ -24,7 +24,8 @@ export class SavedTimesComponent implements OnInit {
       () => {
         this.times$ = this.savedTimesService.getSavedTimers();
       }
-    )}
+    )
+  }
 
   ngOnInit(): void {
     this.times$ = this.savedTimesService.getSavedTimers()
