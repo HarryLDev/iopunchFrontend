@@ -16,5 +16,10 @@ export class SavedTimesService {
     return this.http.get('http://localhost:3000/timer');
   }
 
+  deleteSavedTimer(id: string): Observable<any> {
+    return this.http.delete(`http://localhost:3000/timer/${id}`);
+  }
+
+
   }
 

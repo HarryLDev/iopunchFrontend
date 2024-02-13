@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { CommonModule } from '@angular/common';
 import { SavedTimesComponent } from './saved-times/saved-times.component';
 import { SavedTimesService } from './saved-times/saved-times.service';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { SavedTimesService } from './saved-times/saved-times.service';
     HttpClientModule,
     LoginComponent,
     RegisterComponent,
-    SavedTimesComponent
+    SavedTimesComponent,
+    MatIconModule
+
 
 
 

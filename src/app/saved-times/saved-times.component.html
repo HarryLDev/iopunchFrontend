@@ -1,10 +1,13 @@
 <div style="text-align: center;">
   <ul *ngFor="let time of (times$ | async)" class="savedTimerBox">
-    <li style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-      <div *ngIf="time.punchName" style="">{{ time.punchName }}</div>
-      <div style="">
+    <li style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div>{{ time.punchName }}</div>
+      <div style="font-size: 30px; vertical-align: middle;">
         {{ time.hours | number:'2.0-0' }} : {{ time.minutes | number:'2.0-0' }} : {{ time.seconds | number:'2.0-0' }}
       </div>
+      <button mat-icon-button color="warn" (click)="deleteSavedTimer(time.id)">
+        <mat-icon style="font-size: 30px">delete</mat-icon>
+      </button>
     </li>
   </ul>
 </div>

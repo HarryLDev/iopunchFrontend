@@ -1,15 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { TimerService } from './timer.service';
 
-
-
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss']
 })
-export class TimerComponent {
-  constructor(private timerService: TimerService) { }
+export class TimerComponent implements OnDestroy {
   punchName: string = '';
   savedPunchName: string = '';
   seconds = 0;
@@ -27,7 +24,7 @@ export class TimerComponent {
   private animationFrameId: number | null = null;
   isRunning: boolean = false;
 
-
+  constructor(private timerService: TimerService) { }
 
   toggleTimer(): void {
     if (this.isRunning === false) {
@@ -63,23 +60,17 @@ export class TimerComponent {
     if (this.animationFrameId !== null) {
       cancelAnimationFrame(this.animationFrameId);
       this.animationFrameId = null;
-    }
 
-    this.savedHour = this.hours;
-    this.savedMin = this.minutes;
-    this.savedSec = this.seconds;
-    this.savedSecStr = this.savedSec.toString().padStart(2, '0');
-    this.savedMinStr = this.savedMin.toString().padStart(2, '0');
-    this.savedHourstr = this.savedHour.toString().padStart(2, '0');
+      this.savedHour = this.hours;
+      this.savedMin = this.minutes;
+      this.savedSec = this.seconds;
+      this.savedSecStr = this.savedSec.toString().padStart(2, '0');
+      this.savedMinStr = this.savedMin.toString().padStart(2, '0');
+      this.savedHourstr = this.savedHour.toString().padStart(2, '0');
 
-    this.isRunning = false;
-    this.seconds = 0;
-    this.stringSec = this.seconds.toString().padStart(2, '0');
-    this.minutes = 0;
-    this.stringMin = this.minutes.toString().padStart(2, '0');
-    this.hours = 0;
-    this.savedHourstr = this.savedHour.toString().padStart(2, '0');
+      this.isRunning = false;
 
+      this.savedPunchName = this.punchName;
 
       this.timerService.stopTimer({
         hours: this.savedHour,
@@ -88,26 +79,22 @@ export class TimerComponent {
         punchName: this.punchName
       }).subscribe(
         () => {
-          console.log('Timer stopped and %s saved successfully: %d : %d : %d', this.savedPunchName, this.savedHourstr, this.savedMinStr, this.savedSecStr);
+          console.log('Timer stopped and "%s" saved successfully: %d : %d : %d', this.savedPunchName, this.savedHourstr, this.savedMinStr, this.savedSecStr);
+          this.punchName = '';
         },
         (error: any) => {
           console.error('Error saving timer:', error);
         }
       );
-      this.savedPunchName = this.punchName;
-      this.punchName = '';
-    }
-
-    savePunchName(): void {
-      this.punchName = this.punchName.trim();
-    }
-
-
-
-    ngOnDestroy(): void {
-      this.stopTimer();
-
+    } else {
     }
   }
 
+  savePunchName(): void {
+    this.punchName = this.punchName.trim();
+  }
 
+  ngOnDestroy(): void {
+    this.stopTimer();
+  }
+}
